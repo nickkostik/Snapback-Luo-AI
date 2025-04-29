@@ -15,28 +15,27 @@
         <!-- Minimal nav or remove if not needed on this page -->
         <nav>
             <a href="index.html">Chat</a> |
-            <a href="training.html">Train Behavior</a> |
-            <a href="api_key_setup.html">API Key</a>
+            <a href="training.html">Train Behavior</a>
+            <a href="api_key_setup.html" class="active">API Key</a>
         </nav>
     </header>
 
-    <main class="api-key-main"> <!-- Use a specific class if needed for styling -->
-        <h1>Enter Google AI API Key (INSECURE - DEMO ONLY)</h1>
+    <main> <!-- Removed api-key-main class -->
+        <div class="card"> <!-- Wrap content in a card -->
+            <h2>Configure Google AI API Key (Demo Only)</h2>
 
-        <div class="api-key-form-section">
-            <label for="apiKeyInput">API Key:</label>
-            <input type="text" id="apiKeyInput" placeholder="Paste your key here for this session">
+            <div class="api-key-form-section" style="margin-top: 15px;"> <!-- Add some top margin -->
+                <label for="apiKeyInput" style="display: block; margin-bottom: 8px; font-weight: 500;">API Key:</label>
+                <input type="text" id="apiKeyInput" placeholder="Paste your key here for this session" style="width: 100%; padding: 10px 12px; border: 1px solid #d1d1d1; border-radius: 6px; font-size: 1rem; margin-bottom: 15px;">
 
-            <p class="warning">
-                <strong>Warning:</strong> Never deploy this publicly with the key exposed. This setup is for temporary demonstration purposes only. Always use a secure backend server to handle API keys in production environments.
-            </p>
+                <p class="warning" style="background-color: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 10px 15px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 20px;">
+                    <strong>Warning:</strong> Never deploy this publicly with the key exposed. This setup is for temporary demonstration purposes only. Always use a secure backend server to handle API keys in production environments.
+                </p>
 
-            <button id="saveApiKeyButton">Save Key for Session</button>
-            <div id="saveConfirmation" class="confirmation-message" aria-live="polite" style="margin-top: 10px;"></div> <!-- Confirmation message area -->
-        </div>
-
-        <div class="navigation-links" style="margin-top: 30px; text-align: center;">
-            <a href="index.html">← Back to Chat</a>
+                <button id="saveApiKeyButton" class="button-style">Save Key for Session</button> <!-- Apply button style -->
+                <div id="saveConfirmation" class="confirmation-message" aria-live="polite" style="margin-top: 10px; display: inline-block; margin-left: 15px;"></div> <!-- Confirmation message area -->
+            </div>
+            <!-- Removed the separate navigation link div -->
         </div>
     </main>
 

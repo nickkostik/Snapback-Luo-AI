@@ -13,25 +13,55 @@
         <h1>Snapback Luo</h1>
         <p>Chat with the Luis Garcia AI</p>
         <nav>
-            <a href="index.html">Chat</a> |
+            <a href="index.html" class="active">Chat</a>
             <a href="training.html">Train Behavior</a>
-            <!-- Removed API Key link -->
+            <a href="api_key_setup.html">API Key</a> <!-- Added API Key link back -->
         </nav>
     </header>
 
     <main>
-        <div id="chatbox">
-            <div class="message ai"><span>Hello! I'm Luis Garcia, or Luo as some call me. What's up?</span></div>
-            <!-- Chat messages will appear here -->
+        <!-- Memory Options Card -->
+        <div class="card">
+            <h2>Memory Settings</h2>
+            <div class="memory-options">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="rememberFacts" checked>
+                    <span class="slider round"></span> Remember facts across sessions
+                </label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="forgetAfterSession">
+                    <span class="slider round"></span> Forget after session
+                </label>
+                 <label class="toggle-switch">
+                    <input type="checkbox" id="askBeforeRecalling">
+                    <span class="slider round"></span> Ask before recalling stored facts
+                </label>
+            </div>
+            <div class="current-memory-section" style="margin-top: 15px;">
+                <strong>Current Memory:</strong>
+                <ul id="currentMemoryList" style="font-size: 0.9em; color: #555; list-style-type: disc; padding-left: 20px; margin-top: 5px;">
+                    <!-- Saved facts will be listed here -->
+                    <li>(No facts stored yet)</li>
+                </ul>
+            </div>
         </div>
 
-        <div id="input-area">
-            <button id="attachFileButton" class="icon-button" title="Attach File">📎</button> <!-- Attach File Button -->
-            <input type="file" id="fileInput" accept="image/*,text/*,.pdf,.doc,.docx" style="display: none;"> <!-- Hidden File Input -->
-            <input type="text" id="userInput" placeholder="Ask Luis something...">
-            <button id="sendButton" title="Send Message"></button> <!-- Removed text, icon added via CSS -->
+        <!-- Chat Interface Card -->
+        <div class="card">
+             <!-- No H2 needed for the main chat card -->
+            <div id="chatbox">
+                <div class="message ai"><span>Hello! I'm Luis Garcia, or Luo as some call me. What's up?</span></div>
+                <!-- Chat messages will appear here -->
+            </div>
+
+            <div id="input-area">
+                <button id="attachFileButton" class="icon-button" title="Attach File">📎</button> <!-- Attach File Button -->
+                <input type="file" id="fileInput" accept=".txt,.pdf,.png,.jpg,.jpeg,.gif,.mp3,.wav" style="display: none;"> <!-- Updated File Input accepts -->
+                <input type="text" id="userInput" placeholder="Ask Luis something...">
+                <button id="sendButton" title="Send Message"></button> <!-- Removed text, icon added via CSS -->
+            </div>
+            <div id="filePreviewArea" class="file-preview"></div> <!-- Area to show selected file name -->
         </div>
-        <div id="filePreviewArea" class="file-preview"></div> <!-- Area to show selected file name -->
     </main>
 
     <footer>

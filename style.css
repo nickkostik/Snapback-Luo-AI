@@ -7,64 +7,70 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #ffffff; /* Predominantly white background */
-    color: #000000; /* Sharp black text */
+    background-color: #f9f9f9; /* Slightly off-white background */
+    color: #333333; /* Softer dark gray text */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.6; /* Slightly increased line height */
 }
 
 /* Header */
 header {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff; /* White header */
+    color: #333333;
     padding: 1.5rem 2rem;
     text-align: center;
-    border-bottom: 1px solid #e5e5e5; /* Subtle separator */
-    position: relative; /* Needed if logo positioning becomes complex */
+    border-bottom: 1px solid #e0e0e0; /* Softer border */
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); /* Subtle shadow */
 }
 
 .header-logo {
-    display: block; /* Or inline-block if preferred */
-    margin: 0 auto 0.75rem auto; /* Center horizontally, add space below */
-    max-height: 60px; /* Adjust size as needed */
-    width: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto 0.75rem auto;
+    max-height: 55px; /* Slightly smaller logo */
+    width: auto;
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.7rem; /* Slightly smaller */
     font-weight: 600;
     margin-bottom: 0.25rem;
 }
 
 header p {
-    font-size: 1rem;
-    color: #5f5f5f; /* Slightly lighter gray for subtitle */
+    font-size: 0.95rem; /* Slightly smaller */
+    color: #666666; /* Adjusted gray */
     margin-bottom: 1rem;
 }
 
 nav a {
-    color: #007aff; /* Apple blue for links */
+    color: #007aff; /* Keep Apple blue */
     text-decoration: none;
     margin: 0 15px;
     font-weight: 500;
     transition: color 0.2s ease;
+    padding: 5px 0; /* Add some vertical padding for easier clicking */
 }
-nav a:hover {
+nav a:hover, nav a.active { /* Style for active link */
     color: #0056b3;
+    border-bottom: 2px solid #007aff; /* Indicate active page */
+    padding-bottom: 3px; /* Adjust padding to account for border */
 }
+
 
 /* Main Content Area */
 main {
     flex-grow: 1;
-    max-width: 700px; /* Slightly narrower for focus */
-    width: 90%; /* Responsive width */
-    margin: 40px auto; /* Generous whitespace */
-    padding: 0; /* Remove padding, handle spacing internally */
-    background-color: #ffffff;
+    max-width: 800px; /* Slightly wider */
+    width: 95%; /* More responsive width */
+    margin: 30px auto; /* Reduced top/bottom margin */
+    padding: 0;
+    background-color: transparent; /* Let body background show through */
     display: flex;
     flex-direction: column;
+    gap: 30px; /* Add gap between direct children of main (e.g., cards) */
 }
 
 /* API Key Section - Minimalist */
@@ -462,13 +468,407 @@ main {
 }
 
 
+/* Card Style */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px; /* Slightly more rounded corners */
+    border: 1px solid #e0e0e0; /* Softer border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    padding: 20px 25px; /* Consistent padding */
+    margin-bottom: 25px; /* Consistent spacing below cards */
+}
+.card:last-child {
+    margin-bottom: 0; /* No margin for the last card in a container */
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Separator for card title */
+}
+
 /* Footer */
 footer {
-    background-color: #ffffff;
-    color: #8e8e93; /* Medium gray footer text */
+    background-color: #f9f9f9; /* Match body background */
+    color: #888888; /* Slightly lighter gray */
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem 1rem; /* More padding */
     font-size: 0.85em;
-    border-top: 1px solid #e5e5e5; /* Subtle separator */
-    margin-top: auto;
+    border-top: 1px solid #e0e0e0; /* Softer separator */
+    margin-top: auto; /* Pushes footer to bottom */
+}
+/* Toggle Switch Styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Width of the switch */
+  height: 24px; /* Height of the switch */
+  margin-right: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  margin-bottom: 10px; /* Spacing between toggles */
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; /* Size of the knob */
+  width: 18px;
+  left: 3px; /* Position of the knob */
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #007aff; /* Apple blue when checked */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #007aff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px); /* Move knob to the right */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px; /* Make the track rounded */
+}
+
+.slider.round:before {
+  border-radius: 50%; /* Make the knob round */
+}
+
+/* Label text next to toggle */
+.memory-options label {
+    display: flex; /* Align toggle and text */
+    align-items: center;
+    margin-bottom: 8px; /* Space between options */
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.memory-options label .slider {
+    margin-right: 10px; /* Space between slider and text */
+}
+
+/* Current Memory Section */
+.current-memory-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0; /* Separator */
+}
+.current-memory-section strong {
+    font-weight: 600;
+    color: #333;
+}
+#currentMemoryList {
+    font-size: 0.9em;
+    color: #555;
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+    max-height: 100px; /* Limit height */
+    overflow-y: auto; /* Add scroll if needed */
+}
+#currentMemoryList li {
+    margin-bottom: 4px;
+}
+/* --- Training Page Specific Styles --- */
+
+/* General Button Styles */
+.button-style, .button-style-link { /* Combine styles for consistency */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000; /* Black primary button */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center;
+}
+.button-style:hover, .button-style-link:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+.button-style:active, .button-style-link:active {
+     transform: scale(0.98);
+}
+
+.button-style.secondary {
+    background-color: #e0e0e0; /* Light gray secondary button */
+    color: #333333;
+    border: 1px solid #c0c0c0;
+}
+.button-style.secondary:hover {
+    background-color: #d0d0d0;
+    color: #333333;
+}
+
+.button-style-upload { /* Style label like a button */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007aff; /* Blue for upload actions */
+    color: #ffffff;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.button-style-upload:hover {
+    background-color: #0056b3;
+}
+
+
+/* Behavior Categories Panel */
+.behavior-categories-panel .tabs {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+.tab-button {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 0.95rem;
+    color: #666;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tab-button:hover {
+    color: #000;
+}
+.tab-button.active {
+    color: #007aff;
+    border-bottom-color: #007aff;
+    font-weight: 500;
+}
+
+.tags-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+.tag {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 12px; /* Pill shape */
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer; /* Indicate it might be selectable/removable */
+}
+.tag:hover {
+    background-color: #d0d0d0;
+}
+.remove-tag-btn {
+    background: none;
+    border: none;
+    color: #888;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    line-height: 1;
+}
+.remove-tag-btn:hover {
+    color: #ff3b30; /* Red on hover */
+}
+#newTagInput {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.9em;
+}
+
+/* Personality Extraction Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+.data-table th, .data-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+.data-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+.data-table tbody tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+.data-table td[colspan="5"] {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+.data-table .actions-cell button { /* Style buttons within table */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 2px 4px;
+    color: #007aff;
+    opacity: 0.8;
+}
+.data-table .actions-cell button:hover {
+    opacity: 1;
+    color: #0056b3;
+}
+.data-table .actions-cell button.delete {
+    color: #ff3b30;
+}
+.data-table .actions-cell button.delete:hover {
+    color: #c62828;
+}
+
+
+/* Knowledge Base */
+.knowledge-base-section input[type="search"] {
+     border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    width: 250px; /* Adjust as needed */
+}
+.knowledge-card-placeholder {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    grid-column: 1 / -1; /* Span full width if grid is empty */
+}
+/* Basic Knowledge Card Style (more detail needed when implemented) */
+.knowledge-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    background-color: #fdfdfd;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.knowledge-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.knowledge-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+.knowledge-card .tags {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+
+/* Adjustments for existing elements */
+.training-input-section input[type="text"] {
+    /* Inherits from base styles, ensure consistency */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    margin-bottom: 5px; /* Reduced margin */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.training-input-section input[type="text"]:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.instructions-list {
+    /* Inherits from base styles, ensure consistency */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e0e0e0; /* Updated border color */
+    border-radius: 6px;
+    background-color: #ffffff; /* White background */
+    max-height: 300px;
+    overflow-y: auto;
+}
+.instructions-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0; /* Updated border color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #333;
+}
+.instructions-list li:last-child {
+    border-bottom: none;
+}
+.delete-instruction-btn {
+    /* Inherits from base styles, ensure consistency */
+    background: none;
+    border: none;
+    color: #ff3b30;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 2px 5px;
+    margin-left: 10px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.delete-instruction-btn:hover {
+    opacity: 1;
+}
+
+/* Remove old styles if they conflict */
+.api-key-link-section { /* Remove specific styles if now handled by .card */
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    text-align: left; /* Reset text align if needed */
+}
+.api-key-link-section h3, .api-key-link-section p { /* Reset specific styles if needed */
+   font-weight: normal;
+   margin-bottom: 15px;
+   color: inherit;
+   font-size: inherit;
+}
+/* Ensure the link inside the card looks like a button */
+.api-key-link-section .button-style-link {
+    /* Style is already defined above */
 }
