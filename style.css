@@ -1,0 +1,474 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #ffffff; /* Predominantly white background */
+    color: #000000; /* Sharp black text */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5; /* Subtle separator */
+    position: relative; /* Needed if logo positioning becomes complex */
+}
+
+.header-logo {
+    display: block; /* Or inline-block if preferred */
+    margin: 0 auto 0.75rem auto; /* Center horizontally, add space below */
+    max-height: 60px; /* Adjust size as needed */
+    width: auto; /* Maintain aspect ratio */
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+header p {
+    font-size: 1rem;
+    color: #5f5f5f; /* Slightly lighter gray for subtitle */
+    margin-bottom: 1rem;
+}
+
+nav a {
+    color: #007aff; /* Apple blue for links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+nav a:hover {
+    color: #0056b3;
+}
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    max-width: 700px; /* Slightly narrower for focus */
+    width: 90%; /* Responsive width */
+    margin: 40px auto; /* Generous whitespace */
+    padding: 0; /* Remove padding, handle spacing internally */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* API Key Section - Minimalist */
+.api-key-section {
+    background-color: #f8f8f8; /* Light gray background */
+    border: 1px solid #e5e5e5;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.api-key-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.api-key-section input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    margin-bottom: 8px; /* Space before warning */
+}
+.api-key-section input[type="password"]:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+
+.api-key-section .warning {
+    color: #d93025; /* More prominent warning color */
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+/* Chatbox - iMessage Style */
+#chatbox {
+    flex-grow: 1; /* Takes available space */
+    overflow-y: auto;
+    padding: 15px 10px; /* Padding for messages */
+    margin-bottom: 0; /* Remove margin, handled by input area */
+    background-color: #ffffff; /* White chat background */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between messages */
+    border: none; /* Remove default border */
+}
+
+.message {
+    max-width: 75%; /* Max width for bubbles */
+    padding: 10px 15px;
+    border-radius: 18px; /* Rounded bubbles */
+    line-height: 1.4;
+    word-wrap: break-word; /* Prevent long words overflowing */
+    position: relative;
+    font-size: 1.05rem; /* Slightly larger font for chat */
+}
+
+.message span {
+    display: inline; /* Let text flow naturally */
+}
+
+.message.user {
+    background-color: #007aff; /* Apple blue */
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px; /* Tail effect */
+}
+
+.message.ai {
+    background-color: #e5e5e5; /* Light gray for AI */
+    color: #000000; /* Black text */
+    align-self: flex-start;
+    border-bottom-left-radius: 5px; /* Tail effect */
+}
+
+.message.error {
+    background-color: #ffebee; /* Light red background */
+    color: #c62828; /* Darker red text */
+    align-self: stretch;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    max-width: 100%;
+    margin: 5px 0; /* Add some vertical margin */
+}
+
+.message.typing {
+    color: #8e8e93; /* Medium gray for typing indicator */
+    font-style: italic;
+    align-self: flex-start;
+    background: none;
+    padding: 5px 15px; /* Adjust padding */
+    font-size: 0.95rem;
+}
+
+/* Input Area - Clean and Functional */
+#input-area {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    padding: 15px 10px;
+    border-top: 1px solid #e5e5e5; /* Subtle separator */
+    background-color: #f8f8f8; /* Slight contrast for input area */
+    gap: 8px; /* Add gap between items */
+}
+
+/* Style for icon buttons like attach */
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem; /* Adjust icon size */
+    color: #5f5f5f; /* Medium gray */
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+}
+.icon-button:hover {
+    color: #007aff; /* Apple blue on hover */
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 18px; /* Pill shape */
+    font-size: 1rem;
+    background-color: #ffffff;
+    /* margin-right: 10px; Removed, using gap in #input-area now */
+    resize: none; /* Prevent textarea resize if it were one */
+    outline: none;
+}
+#userInput:focus {
+     border-color: #007aff;
+}
+
+#sendButton {
+    padding: 8px 15px;
+    background-color: #007aff; /* Apple blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Circle button */
+    font-size: 1.2rem; /* Make icon/text larger */
+    font-weight: 500;
+    line-height: 1; /* Ensure text/icon is centered */
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent button from shrinking */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* Fixed size */
+    height: 36px; /* Fixed size */
+}
+
+#sendButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Add a simple send icon (using text or SVG later) */
+#sendButton::before {
+    content: '➤'; /* Use a standard right-pointing arrow */
+    font-size: 1.1rem; /* Slightly adjust size if needed */
+    transform: rotate(-45deg); /* Optional: Rotate for paper plane look */
+    margin-bottom: 2px; /* Adjust vertical alignment if needed */
+}
+
+/* File Preview Area */
+.file-preview {
+    display: none; /* Hidden by default */
+    padding: 8px 12px;
+    margin: -10px 10px 10px 10px; /* Position below input area */
+    background-color: #e5e5e5; /* Light gray background */
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-preview span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.remove-file-btn {
+    background: none;
+    border: none;
+    color: #ff3b30; /* Apple red */
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 2px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+.remove-file-btn:hover {
+    opacity: 1;
+}
+
+/* Style for file mention in chat */
+.file-mention {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #555; /* Adjust color if needed */
+    margin-left: 5px;
+}
+
+
+/* Styles for Training Page - Consistent Minimalist Look */
+
+/* Utility class for screen reader only elements */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+.training-main {
+    padding-bottom: 40px;
+}
+
+.training-section {
+    margin-bottom: 25px;
+}
+
+.training-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600; /* Slightly bolder labels */
+    font-size: 1rem;
+}
+
+.training-section textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-family: inherit; /* Use body font */
+    font-size: 1rem;
+    min-height: 80px;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.training-section textarea:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+#generatePromptButton {
+    padding: 12px 25px;
+    background-color: #000000; /* Black button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#generatePromptButton:hover {
+    background-color: #333333; /* Slightly lighter black */
+}
+#generatePromptButton:active {
+    transform: scale(0.98); /* Subtle press effect */
+}
+
+#generatedPrompt {
+    background-color: #f8f8f8; /* Light gray for readonly */
+    font-family: "SF Mono", Monaco, Consolas, "Courier New", monospace; /* Monospace font */
+    font-size: 0.9em;
+    border: 1px solid #e5e5e5;
+    min-height: 150px; /* More space */
+}
+
+/* New styles for single input training */
+.training-input-section {
+    margin-bottom: 20px; /* Space below the input area */
+    position: relative; /* For positioning confirmation message if needed */
+}
+
+#trainingInstruction {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #d1d1d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    margin-bottom: 10px; /* Space between input and confirmation */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#trainingInstruction:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.confirmation-message {
+    font-size: 0.9rem;
+    color: #34c759; /* Apple green for success */
+    height: 1.5em; /* Allocate space even when hidden */
+    opacity: 0; /* Hidden by default, controlled by JS */
+    transition: opacity 0.5s ease-out; /* Match JS */
+    font-weight: 500;
+}
+
+/* Styles for API Key Link Section on Training Page */
+.api-key-link-section {
+    padding: 20px;
+    background-color: #f8f8f8; /* Light background */
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    text-align: center; /* Center content */
+}
+
+.button-style-link {
+    display: inline-block; /* Allow padding and margins */
+    padding: 10px 20px;
+    background-color: #000000; /* Black button */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.button-style-link:hover {
+    background-color: #333333; /* Lighter black */
+    color: #ffffff; /* Ensure text remains white */
+}
+.button-style-link:active {
+     transform: scale(0.98);
+}
+
+/* Styles for Saved Instructions List on Training Page */
+.instructions-list {
+    list-style: none; /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+    border: 1px solid #e5e5e5; /* Add a light border */
+    border-radius: 6px;
+    background-color: #f8f8f8; /* Light background */
+    max-height: 300px; /* Limit height and make scrollable */
+    overflow-y: auto; /* Add scroll if needed */
+}
+
+.instructions-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e5e5e5; /* Separator lines */
+    display: flex; /* Use flexbox to align text and button */
+    justify-content: space-between; /* Push button to the right */
+    align-items: center; /* Vertically align items */
+    font-size: 0.95rem;
+    color: #333; /* Darker text for readability */
+}
+
+.instructions-list li:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+.delete-instruction-btn {
+    background: none;
+    border: none;
+    color: #ff3b30; /* Apple red for delete */
+    cursor: pointer;
+    font-size: 1.1rem; /* Make icon slightly larger */
+    padding: 2px 5px; /* Small padding */
+    margin-left: 10px; /* Space between text and button */
+    line-height: 1; /* Ensure icon aligns well */
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.delete-instruction-btn:hover {
+    opacity: 1;
+}
+
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    color: #8e8e93; /* Medium gray footer text */
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85em;
+    border-top: 1px solid #e5e5e5; /* Subtle separator */
+    margin-top: auto;
+}

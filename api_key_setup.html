@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapback Luo - API Key Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="luis.png" alt="Snapback Luo Logo" class="header-logo"> <!-- Added Logo -->
+        <h1>Snapback Luo</h1>
+        <p>Configure API Key (Demo)</p>
+        <!-- Minimal nav or remove if not needed on this page -->
+        <nav>
+            <a href="index.html">Chat</a> |
+            <a href="training.html">Train Behavior</a> |
+            <a href="api_key_setup.html">API Key</a>
+        </nav>
+    </header>
+
+    <main class="api-key-main"> <!-- Use a specific class if needed for styling -->
+        <h1>Enter Google AI API Key (INSECURE - DEMO ONLY)</h1>
+
+        <div class="api-key-form-section">
+            <label for="apiKeyInput">API Key:</label>
+            <input type="text" id="apiKeyInput" placeholder="Paste your key here for this session">
+
+            <p class="warning">
+                <strong>Warning:</strong> Never deploy this publicly with the key exposed. This setup is for temporary demonstration purposes only. Always use a secure backend server to handle API keys in production environments.
+            </p>
+
+            <button id="saveApiKeyButton">Save Key for Session</button>
+            <div id="saveConfirmation" class="confirmation-message" aria-live="polite" style="margin-top: 10px;"></div> <!-- Confirmation message area -->
+        </div>
+
+        <div class="navigation-links" style="margin-top: 30px; text-align: center;">
+            <a href="index.html">← Back to Chat</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© Snapback Luo - AI Persona Demo</p>
+    </footer>
+
+    <script src="api_key_script.js"></script> <!-- We'll create this script next -->
+</body>
+</html>
